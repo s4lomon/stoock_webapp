@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <script type="module" src="cookies.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Comments - Retro Windows Style</title>
+  <style>
+    /* --- Janela centralizada --- */
+    .wrapper {
+      max-width: 600px;
+      margin: 2.5rem auto;
+      padding: 1rem;
+      background: #C0C0C0;
+      box-shadow: inset 0 0 0 2px #808080;
+      font-family: 'MS Sans Serif', Arial, sans-serif;
+      color: #000;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #C0C0C0;
+    }
+    h1 {
+      background: linear-gradient(to right, #000080, #0000A0);
+      color: #FFF;
+      margin: 0;
+      padding: 0.25rem 0.5rem;
+      font-weight: bold;
+      border: 1px solid #404040;
+      font-size: 1.375rem;
+      font-family: 'MS Sans Serif', Arial, sans-serif;
+    }
+    .window {
+      background: #C0C0C0;
+      border: 2px solid #808080;
+      padding: 1rem;
+      margin-top: 0.5rem;
+      box-sizing: border-box;
+      position: relative;
+      min-height: 9.375rem;
+    }
+    textarea {
+      width: 100%;
+      height: 5rem;
+      margin: 0.0625rem 0;
+      padding: 0.125rem;
+      font-family: 'MS Sans Serif', Arial, sans-serif;
+      background: #FFF;
+      border: 2px inset #FFF;
+      box-sizing: border-box;
+    }
+    #submitBtn {
+      float: right;
+      margin: 0.25rem 0;
+      padding: 0.25rem 0.5rem;
+      font-size: 1rem;
+    }
+    #commentsContainer {
+      margin-top: 1rem;
+      padding: 0.25rem;
+      background: #C0C0C0;
+    }
+    .comment {
+      margin-bottom: 0.5rem;
+      padding: 0.25rem;
+      background: #E0E0E0;
+      border-top: 2px solid #FFF;
+      border-left: 2px solid #FFF;
+      border-bottom: 2px solid #404040;
+      border-right: 2px solid #404040;
+      font-size: 0.9rem;
+    }
+    .timestamp {
+      font-size: 0.7rem;
+      color: #555;
+      margin-bottom: 0.125rem;
+    }
+    button {
+      font-family: 'MS Sans Serif', Arial, sans-serif;
+      font-size: 1rem;
+      background: #C0C0C0;
+      color: #000;
+      border: 2px outset #FFF;
+      padding: 0.25rem 0.5rem;
+      cursor: pointer;
+      margin: 0.25rem 0;
+    }
+    button:active {
+      border: 2px inset #FFF;
+    }
+    #backBtn {
+      position: fixed;
+      bottom: 1.25rem;
+      right: 5rem;
+      padding: 0.25rem 0.75rem;
+      font-family: 'MS Sans Serif', Arial, sans-serif;
+      background: #C0C0C0;
+      border: 2px outset #FFF;
+    }
+    .footer-note {
+      position: fixed;
+      bottom: 1.25rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'MS Sans Serif', Arial, sans-serif;
+      font-size: 1rem;
+      color: #000;
+      background: #C0C0C0;
+      border: 2px solid #808080;
+      padding: 0.125rem 0.5rem;
+      text-align: center;
+      z-index: 500;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <h1>Comments</h1>
+    <div class="window">
+      <textarea id="commentInput" placeholder="Leave your message here..."></textarea>
+      <button id="submitBtn">Submit</button>
+    </div>
+    <div id="commentsContainer"></div>
+
+    <!-- Esses dois botões DEVEM ficar dentro do wrapper -->
+    <button id="backBtn" onclick="location.href='index.html'">Back to Simulator</button>
+    <div class="footer-note">Work in progress</div>
+
+  </div> <!-- ✨ Aqui fecha a div.wrapper certinho -->
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+  <!-- Seu script de comentários -->
+  <script type="module" src="comments.js"></script>
+
+</body>
+</html>

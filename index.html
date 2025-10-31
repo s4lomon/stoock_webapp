@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StockLooper</title>
+  
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="script.js"></script>
+</head>
+<body>
+<divclass="wrapper">
+<div class="wrapper">
+  <h1 class="StockLooper">🎰 StockLooper</h1>
+
+  
+  <p id="accessTracker">🙋 people saw this</p>
+  <script type="module">
+    import { getAccessCount } from "./tracker.js";
+  
+    document.addEventListener("DOMContentLoaded", async () => {
+      const current = await getAccessCount();
+      document.getElementById("accessTracker").textContent =
+        `🙋 ${current} people saw this`;
+    });
+  </script>
+  
+  <div id="simTitle">Monte Carlo Simulator</div>
+
+ <div class="slider-container">
+
+  <h2>Internal Growth Drivers</h2>
+  <div class="slider-group internal">
+    <div class="slider-block"><label>Dividend per Share</label>
+      <div class="range-wrapper">
+        <input type="range" id="slider1" min="50" max="150" value="100">
+        <div class="slider-bubble" id="bubble1">100%</div>
+      </div>
+    </div>
+
+    <div class="slider-block"><label>Cash and Cash Equivalents</label>
+      <div class="range-wrapper">
+        <input type="range" id="slider2" min="50" max="150" value="100">
+        <div class="slider-bubble" id="bubble2">100%</div>
+      </div>
+    </div>
+
+    <div class="slider-block"><label>Shares Outstanding</label>
+      <div class="range-wrapper">
+        <input type="range" id="slider3" min="50" max="150" value="100">
+        <div class="slider-bubble" id="bubble3">100%</div>
+      </div>
+    </div>
+
+    <div class="slider-block"><label>Revenue</label>
+      <div class="range-wrapper">
+        <input type="range" id="slider4" min="50" max="150" value="100">
+        <div class="slider-bubble" id="bubble4">100%</div>
+      </div>
+    </div>
+
+    <div class="slider-block"><label>EBIT</label>
+      <div class="range-wrapper">
+        <input type="range" id="slider5" min="50" max="150" value="100">
+        <div class="slider-bubble" id="bubble5">100%</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>External Market Pressures</h2>
+  <div class="slider-group external">
+    <div class="slider-block"><label>PEG Ratio</label>
+      <div class="range-wrapper">
+        <input type="range" id="slider6" min="50" max="150" value="100">
+        <div class="slider-bubble" id="bubble6">100%</div>
+      </div>
+    </div>
+
+    <div class="slider-block"><label>Tax Rate</label>
+      <div class="range-wrapper">
+        <input type="range" id="slider7" min="50" max="150" value="100">
+        <div class="slider-bubble" id="bubble7">100%</div>
+      </div>
+    </div>
+
+    <div class="slider-block"><label>Interest Rate</label>
+      <div class="range-wrapper">
+        <input type="range" id="slider8" min="50" max="150" value="100">
+        <div class="slider-bubble" id="bubble8">100%</div>
+      </div>
+    </div>
+
+    <div class="slider-block"><label>Risk-Free Rate</label>
+      <div class="range-wrapper">
+        <input type="range" id="slider9" min="50" max="150" value="100">
+        <div class="slider-bubble" id="bubble9">100%</div>
+      </div>
+    </div>
+
+    <div class="slider-block"><label>Cost of Debt</label>
+      <div class="range-wrapper">
+        <input type="range" id="slider10" min="50" max="150" value="100">
+        <div class="slider-bubble" id="bubble10">100%</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+  
+    <div class="button-panel">
+      <button id="randomBtn">🎲 Random</button>
+      <button id="runBtn">⏩ Run Assumptions</button>
+      <button id="resetBtn">🔁 New Run</button>
+      <button id="cleanBtn">🧼 Clean Chart</button>
+    </div>
+
+    <div class="scenario-panel">
+      <span class="scenario-title">🤔 Try</span>
+      <button onclick="applyScenario('boom')">📈 Boom</button>
+      <button onclick="applyScenario('recession')">📉 Recession</button>
+      <button onclick="applyScenario('split')">🔀 Split Shares</button>
+      <button onclick="applyScenario('inflation')">🛡 Inflation Shield</button>
+      <button id="noiseBtn">🔇 Silence?</button> 
+    </div>
+    
+  </div>
+
+    
+
+  <canvas id="grafico"></canvas>
+
+  <div id="stockTracker">
+    <h3>📈 Stock Delta</h3>
+
+    <div id="trackerList"></div>
+  </div>
+
+  <!-- Tooltip Info Icon -->
+<div id="tooltipIcon" class="info-icon">
+  i
+  <div class="tooltip-text">
+    <strong>README</strong><br><br>
+
+    # Overview<br><br>
+
+    Monte Carlo simulation is a forecast model that uses repeated random sampling to estimate the probability distribution of different outcomes.<br><br>
+
+    # Get started<br><br>
+
+    Test the default scenarios to understand how the system reacts to different conditions.<br><br>
+    * In the sliders set your market assumptions, each run will forecast the stock price for the next 5 years.<br>
+    * "Stock Delta" panel will display the total fluctuation for each run.<br><br>
+
+    # Key features<br><br>
+
+    * Identify market tendencies, after several runs, a "cloud" of projections will form on the chart, revealing a visual trend of probable price ranges. It helps to understand the best timing and amount to trade.<br>
+    * Visualize stock volatility in response to market fluctuations: a stable stock will display a consistent dense line, one with higher beta will show an expanded cloud of possible values.<br><br>
+
+    # Privacy and Data Source<br><br>
+
+    The Access Tracker does not register your IP or any kind of personal data. If you access the page multiple times, each visit is counted independently.<br><br>
+    This project is based on publicly available financial statements from Blackstone Inc., accessible on their official website.<br>
+    I am not affiliated with Blackstone in any way.<br><br>
+
+    # Feedback<br><br>
+
+    If you encounter any bugs or have suggestions, please leave a note in the comment page — other users will be able to see your text.<br><br>
+
+    # Thank you<br><br>
+
+    This is a prototype with limited features and should not be used as investment advice — yet.<br><br>
+  </div> <!-- FECHANDO o tooltip-text aqui! -->
+</div> <!-- FECHANDO o tooltipIcon aqui! -->
+
+<!-- Agora os botões ficam FORA do tooltip! -->
+<button id="feedbackBtn" onclick="location.href='Comments.html'">
+  💬 Bug? Feedback?
+</button>
+
+<button id="btnLangPT" onclick="location.href='StockLooper-pt.html'">
+  PT-BR
+</button>
+
+<div class="footer-signature">
+  By Apo_v01d corporation  © 2025 – All rights reserved
+</div>
+</div>
+</divclass>
+</body>
+</html>
+
+
