@@ -3,7 +3,7 @@
 ## Description  
 StockLooper is a web application designed for exploratory financial analysis and stock-price simulation. Built as a prototype, it allows users to apply a Monte Carlo simulation engine to model the future behavior of a stock, test assumptions under different market conditions, and visualise the distribution of possible outcomes.
 
-Live Demo: [https://stocklooper.web.app](https://stocklooper.web.app)
+Demo: [https://stocklooper.web.app](https://stocklooper.web.app)
 
 ---
 
@@ -28,11 +28,6 @@ In StockLooper, the Monte Carlo simulation module enables:
 
 ---
 
-## Features  
-- Responsive web interface (works on desktop and mobile)  
-- Real-time user input adjustment (volatility, time horizon, share metrics)  
-- Visual output: graphs/histograms of simulated results  
-- Export or snapshot of results for further analysis  
 - Designed for educational and prototype use (not financial advice)
 
 ---
